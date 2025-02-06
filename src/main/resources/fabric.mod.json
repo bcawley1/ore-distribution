@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "oredistribution",
+  "version": "${version}",
+  "name": "OreDistribution",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/oredistribution/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "me.bcawley.oredistribution.client.OredistributionClient"
+    ],
+    "main": [
+      "me.bcawley.oredistribution.Oredistribution"
+    ],
+    "modmenu": [
+      "me.bcawley.oredistribution.client.config.ModMenuConfig"
+    ]
+  },
+  "mixins": [
+    "oredistribution.mixins.json",
+    {
+      "config": "oredistribution.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabric-key-binding-api-v1": "*",
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
