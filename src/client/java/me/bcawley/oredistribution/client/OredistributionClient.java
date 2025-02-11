@@ -3,8 +3,7 @@ package me.bcawley.oredistribution.client;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import me.bcawley.oredistribution.client.config.Config;
 import me.bcawley.oredistribution.client.distribution.Distribution;
-import me.bcawley.oredistribution.client.distribution.Range;
-import me.bcawley.oredistribution.client.distribution.Weight;
+import me.bcawley.oredistribution.client.distribution.Ore;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -20,10 +19,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class OredistributionClient implements ClientModInitializer {
     private Distribution distribution;
@@ -34,13 +29,15 @@ public class OredistributionClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         //TODO:
-        // - Biomes
+        // - Biomes DONE
         // - Dimensions
         // - Colors
         // - Arrows
 
         logger.info("Starting up!!!!!");
         oredistributionClient = this;
+
+
 
         keyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key.distribution.reload", // The translation key of the keybinding's name
@@ -52,6 +49,7 @@ public class OredistributionClient implements ClientModInitializer {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (keyBinding.wasPressed()) {
                 client.player.sendMessage(Text.literal("Reloaded Distribution Config!"), false);
+                client.player.sendMessage(Text.of(MinecraftClient.getInstance().world.getBiome(MinecraftClient.getInstance().player.getBlockPos()).getIdAsString()), false);
                 reloadDistribution();
             }
         });
@@ -65,10 +63,6 @@ public class OredistributionClient implements ClientModInitializer {
 //        }));
 
         registerTextRender();
-
-
-        Map<String, Weight> weights = new HashMap<>();
-        weights.put("Diamond", new Weight(new ArrayList<>(List.of(new Range(16, -60, 0, 100)))));
 
         reloadDistribution();
 //        try {
@@ -92,10 +86,10 @@ public class OredistributionClient implements ClientModInitializer {
             double y = MinecraftClient.getInstance().player.getY();
             if (Config.isShowText()) {
                 int textY = 0;
-                for (String text : distribution.getDisplayText(y)) {
+                for (Ore ore : distribution.getDistributions()) {
                     textY+=10;
-                    int textWidth = MinecraftClient.getInstance().textRenderer.getWidth(text);
-                    drawContext.drawText(MinecraftClient.getInstance().textRenderer, text, MinecraftClient.getInstance().getWindow().getScaledWidth() - Config.getTextOffset() - textWidth, textY, 0xFF00FF00, false);
+                    int textWidth = MinecraftClient.getInstance().textRenderer.getWidth(ore.getText(y));
+                    drawContext.drawText(MinecraftClient.getInstance().textRenderer, ore.getText(y), MinecraftClient.getInstance().getWindow().getScaledWidth() - Config.getTextOffset() - textWidth, textY, ore.getColor(), false);
                 }
             }
         });

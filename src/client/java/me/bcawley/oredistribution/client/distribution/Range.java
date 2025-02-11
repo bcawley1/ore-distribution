@@ -2,13 +2,16 @@ package me.bcawley.oredistribution.client.distribution;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import net.minecraft.client.MinecraftClient;
+
+import java.util.List;
 
 public record Range(@JsonProperty int startY, @JsonProperty int endY, @JsonProperty double startPercent,
-                    @JsonProperty double endPercent) {
+                    @JsonProperty double endPercent, @JsonProperty List<String> biome) {
 
     @JsonIgnore
     public boolean inRange(double y) {
-        return y >= startY && y < endY;
+        return y >= startY && y < endY && (biome.contains("any") || biome.contains(MinecraftClient.getInstance().world.getBiome(MinecraftClient.getInstance().player.getBlockPos()).getIdAsString()));
     }
 
     @JsonIgnore
