@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Distribution {
@@ -20,11 +21,17 @@ public class Distribution {
         return distributions;
     }
 
-//    public List<String> getDisplayText(double y) {
-//        List<String> text = new ArrayList<>();
-//        for (Map.Entry<String, Weight> entry : distributions.entrySet()) {
-//            text.add("%s: %.0f%%".formatted(entry.getKey(), entry.getValue().getWeight(y)));
-//        }
-//        return text;
-//    }
+    public void moveUp(Ore ore) {
+        int index = distributions.indexOf(ore);
+        if (index > 0) {
+            Collections.swap(distributions, index, index - 1);
+        }
+    }
+
+    @JsonIgnore
+    public Ore getOre(String name){
+        return distributions.stream()
+                .filter(ore -> ore.getName().equalsIgnoreCase(name))
+                .findFirst().orElseGet(null);
+    }
 }

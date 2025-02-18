@@ -23,4 +23,14 @@ public record Range(@JsonProperty int startY, @JsonProperty int endY, @JsonPrope
             return 0;
         }
     }
+
+    @JsonIgnore
+    public String getDirection(double y) {
+        if (inRange(y)) {
+            double slope = (endPercent - startPercent) / (endY - startY);
+            return slope > 0 ? "up" : (slope == 0 ? "both" : "down");
+        } else {
+            return null;
+        }
+    }
 }

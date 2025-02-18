@@ -2,11 +2,17 @@
   "schemaVersion": 1,
   "id": "oredistribution",
   "version": "${version}",
-  "name": "OreDistribution",
-  "description": "",
-  "authors": [],
-  "contact": {},
-  "license": "All-Rights-Reserved",
+  "name": "Miner's Guide",
+  "description": "Implements UI-based elements to help guide players with the ore distribution system in Minecraft.",
+  "authors": [
+    "bcawley"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/project/miners-guide",
+    "sources": "https://github.com/bcawley1/ore-distribution",
+    "issues": "https://github.com/bcawley1/ore-distribution/issues"
+  },
+  "license": "MIT",
   "icon": "assets/oredistribution/icon.png",
   "environment": "client",
   "entrypoints": {
@@ -31,6 +37,15 @@
     "fabric-key-binding-api-v1": "*",
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
+    "fabric-api": ">=0.117.0+1.21.4",
     "minecraft": "${minecraft_version}"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "Modrinth": "https://modrinth.com/project/miners-guide"
+      },
+      "update_checker": true
+    }
   }
 }

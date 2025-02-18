@@ -1,0 +1,384 @@
+{
+  "distributions": [
+    {
+      "name": "Diamond",
+      "weight": {
+        "ranges": [
+          {
+            "startY": -64,
+            "endY": 16,
+            "startPercent": 100.0,
+            "endPercent": 0.0,
+            "biome": [
+              "any"
+            ]
+          }
+        ]
+      },
+      "color": 65535,
+      "dimension": "minecraft:overworld",
+      "fullRange": "-64 - 16",
+      "common": [-59],
+      "tips": "",
+      "item": "minecraft:diamond"
+    },
+    {
+      "name": "Iron",
+      "weight": {
+        "ranges": [
+          {
+            "startY": -64,
+            "endY": 72,
+            "startPercent": 11.0,
+            "endPercent": 11.0,
+            "biome": [
+              "any"
+            ]
+          },
+          {
+            "startY": -24,
+            "endY": 15,
+            "startPercent": 0.0,
+            "endPercent": 89.0,
+            "biome": [
+              "any"
+            ]
+          },
+          {
+            "startY": 15,
+            "endY": 55,
+            "startPercent": 89.0,
+            "endPercent": 0.0,
+            "biome": [
+              "any"
+            ]
+          },
+          {
+            "startY": 80,
+            "endY": 232,
+            "startPercent": 0.0,
+            "endPercent": 100.0,
+            "biome": [
+              "any"
+            ]
+          },
+          {
+            "startY": 232,
+            "endY": 320,
+            "startPercent": 100.0,
+            "endPercent": 39.8,
+            "biome": [
+              "any"
+            ]
+          }
+        ]
+      },
+      "color": 15198183,
+      "dimension": "minecraft:overworld",
+      "fullRange": "-64 - 320",
+      "common": [15, 232],
+      "tips": "You can find large iron veins in the deepslate layer",
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "name": "Redstone",
+      "weight": {
+        "ranges": [
+          {
+            "startY": -64,
+            "endY": 16,
+            "startPercent": 17.0,
+            "endPercent": 17.0,
+            "biome": [
+              "any"
+            ]
+          },
+          {
+            "startY": -64,
+            "endY": -32,
+            "startPercent": 83.0,
+            "endPercent": 0.0,
+            "biome": [
+              "any"
+            ]
+          }
+        ]
+      },
+      "color": 16717335,
+      "dimension": "minecraft:overworld",
+      "fullRange": "-64 - 16",
+      "common": [-59],
+      "tips": "",
+      "item": "minecraft:redstone"
+    },
+    {
+      "name": "Lapis Lazuli",
+      "weight": {
+        "ranges": [
+          {
+            "startY": -64,
+            "endY": 64,
+            "startPercent": 33.0,
+            "endPercent": 33.0,
+            "biome": [
+              "any"
+            ]
+          },
+          {
+            "startY": -32,
+            "endY": 0,
+            "startPercent": 0.0,
+            "endPercent": 67.0,
+            "biome": [
+              "any"
+            ]
+          },
+          {
+            "startY": 0,
+            "endY": 32,
+            "startPercent": 67.0,
+            "endPercent": 0.0,
+            "biome": [
+              "any"
+            ]
+          }
+        ]
+      },
+      "color": 4344499,
+      "dimension": "minecraft:overworld",
+      "fullRange": "-64 - 64",
+      "common": [-1],
+      "tips": "Reduced air exposure",
+      "item": "minecraft:lapis_lazuli"
+    },
+    {
+      "name": "Emerald",
+      "weight": {
+        "ranges": [
+          {
+            "startY": -16,
+            "endY": 236,
+            "startPercent": 0.0,
+            "endPercent": 100.0,
+            "biome": [
+              "minecraft:windswept_hills",
+              "minecraft:windswept_forest",
+              "minecraft:windswept_gravelly_hills",
+              "minecraft:meadow",
+              "minecraft:cherry_grove",
+              "minecraft:grove",
+              "minecraft:snowy_slopes",
+              "minecraft:stony_peaks",
+              "minecraft:frozen_peaks",
+              "minecraft:jagged_peaks"
+            ]
+          },
+          {
+            "startY": 236,
+            "endY": 320,
+            "startPercent": 100.0,
+            "endPercent": 70.0,
+            "biome": [
+              "minecraft:windswept_hills",
+              "minecraft:windswept_forest",
+              "minecraft:windswept_gravelly_hills",
+              "minecraft:meadow",
+              "minecraft:cherry_grove",
+              "minecraft:grove",
+              "minecraft:snowy_slopes",
+              "minecraft:stony_peaks",
+              "minecraft:frozen_peaks",
+              "minecraft:jagged_peaks"
+            ]
+          }
+        ]
+      },
+      "color": 8309789,
+      "dimension": "minecraft:overworld",
+      "fullRange": "-16 - 320",
+      "common": [236],
+      "tips": "Found only in mountains",
+      "item": "minecraft:emerald"
+    },
+    {
+      "name": "Coal",
+      "weight": {
+        "ranges": [
+          {
+            "startY": 0,
+            "endY": 95,
+            "startPercent": 0.0,
+            "endPercent": 74.0,
+            "biome": [
+              "any"
+            ]
+          },
+          {
+            "startY": 95,
+            "endY": 192,
+            "startPercent": 74.0,
+            "endPercent": 0.0,
+            "biome": [
+              "any"
+            ]
+          },
+          {
+            "startY": 136,
+            "endY": 320,
+            "startPercent": 57.0,
+            "endPercent": 57.0,
+            "biome": [
+              "any"
+            ]
+          }
+        ]
+      },
+      "color": 1710618,
+      "dimension": "minecraft:overworld",
+      "fullRange": "0 - 320",
+      "common": [44,95,136],
+      "tips": "",
+      "item": "minecraft:coal"
+    },
+    {
+      "name": "Copper",
+      "weight": {
+        "ranges": [
+          {
+            "startY": -16,
+            "endY": 48,
+            "startPercent": 0.0,
+            "endPercent": 50.0,
+            "biome": [
+              "any"
+            ]
+          },
+          {
+            "startY": 48,
+            "endY": 112,
+            "startPercent": 50.0,
+            "endPercent": 0.0,
+            "biome": [
+              "any"
+            ]
+          },
+          {
+            "startY": -16,
+            "endY": 48,
+            "startPercent": 0.0,
+            "endPercent": 50.0,
+            "biome": [
+              "minecraft:dripstone_caves"
+            ]
+          },
+          {
+            "startY": 48,
+            "endY": 112,
+            "startPercent": 50.0,
+            "endPercent": 0.0,
+            "biome": [
+              "minecraft:dripstone_caves"
+            ]
+          }
+        ]
+      },
+      "color": 16759071,
+      "dimension": "minecraft:overworld",
+      "fullRange": "-16 - 112",
+      "common": [48],
+      "tips": "2x chance in dripstone caves",
+      "item": "minecraft:copper_ingot"
+    },
+    {
+      "name": "Gold",
+      "weight": {
+        "ranges": [
+          {
+            "startY": -64,
+            "endY": -48,
+            "startPercent": 40.0,
+            "endPercent": 40.0,
+            "biome": [
+              "any"
+            ]
+          },
+          {
+            "startY": -64,
+            "endY": -16,
+            "startPercent": 0.0,
+            "endPercent": 100.0,
+            "biome": [
+              "any"
+            ]
+          },
+          {
+            "startY": -16,
+            "endY": 32,
+            "startPercent": 100.0,
+            "endPercent": 0.0,
+            "biome": [
+              "any"
+            ]
+          },
+          {
+            "startY": 32,
+            "endY": 320,
+            "startPercent": 100.0,
+            "endPercent": 100.0,
+            "biome": [
+              "minecraft:wooded_badlands",
+              "minecraft:eroded_badlands",
+              "minecraft:badlands"
+            ]
+          }
+        ]
+      },
+      "color": 16708678,
+      "dimension": "minecraft:overworld",
+      "fullRange": "-64 - 32",
+      "common": [-16],
+      "tips": "Very common above y=32 in badlands",
+      "item": "minecraft:gold_ingot"
+    },
+    {
+      "name": "Netherite",
+      "weight": {
+        "ranges": [
+          {
+            "startY": 6,
+            "endY": 15,
+            "startPercent": 0.0,
+            "endPercent": 100.0,
+            "biome": [
+              "any"
+            ]
+          },
+          {
+            "startY": 15,
+            "endY": 23,
+            "startPercent": 100.0,
+            "endPercent": 3.0,
+            "biome": [
+              "any"
+            ]
+          },
+          {
+            "startY": 23,
+            "endY": 119,
+            "startPercent": 3.0,
+            "endPercent": 3.0,
+            "biome": [
+              "any"
+            ]
+          }
+        ]
+      },
+      "color": 8016971,
+      "dimension": "minecraft:the_nether",
+      "fullRange": "6 - 119",
+      "common": [15],
+      "tips": "Mine around y=11 to avoid lava lakes",
+      "item": "minecraft:netherite_ingot"
+    }
+  ]
+}
