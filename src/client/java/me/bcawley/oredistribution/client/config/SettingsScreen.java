@@ -41,7 +41,7 @@ public class SettingsScreen extends Screen {
                 .dimensions(20, 20, width / 5, 20)
                 .build();
         addDrawableChild(showOverlay);
-        SliderWidget xOffset = new SliderWidget(2 * (width / 5) + 40, 20, width / 5, 20, Text.literal("X Offset: %d".formatted(config.xOffset)), (double) config.xOffset / 1000 + 0.5) {
+        SliderWidget xOffset = new SliderWidget(2 * (width / 5) + 40, 20, width / 5, 20, Text.literal("X Offset: %d".formatted(config.xOffset)), (double) config.xOffset / 200 + 0.5) {
             @Override
             protected void updateMessage() {
                 setMessage(Text.of("X Offset: %d".formatted((int) ((this.value - 0.5) * 200))));
@@ -54,7 +54,7 @@ public class SettingsScreen extends Screen {
         };
         addDrawableChild(xOffset);
 
-        SliderWidget yOffset = new SliderWidget(3 * (width / 5) + 50, 20, width / 5, 20, Text.literal("Y Offset: %d".formatted(config.yOffset)), (double) config.yOffset / 1000 + 0.5) {
+        SliderWidget yOffset = new SliderWidget(3 * (width / 5) + 50, 20, width / 5, 20, Text.literal("Y Offset: %d".formatted(config.yOffset)), (double) config.yOffset / 200 + 0.5) {
             @Override
             protected void updateMessage() {
                 setMessage(Text.of("Y Offset: %d".formatted((int) ((this.value - 0.5) * 200))));
