@@ -1,30 +1,37 @@
 package me.bcawley.oredistribution;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mojang.logging.LogUtils;
+import me.bcawley.oredistribution.config.Config;
+import me.bcawley.oredistribution.config.SettingsScreen;
+import me.bcawley.oredistribution.distribution.Distribution;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.client.gui.screens.Screen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.loading.FMLPaths;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.slf4j.Logger;
 
-// The value here should match an entry in the META-INF/neoforge.mods.toml file
+import java.io.File;
+
 @Mod(OreDistribution.MODID)
 public class OreDistribution {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "oredistribution";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
-    // Create a Deferred Register to hold Blocks which will all be registered under the "oredistribution" namespace
+    private static Distribution distribution;
+    private static Distribution defaultDistribution;
+    private static Config config;
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
@@ -37,19 +44,28 @@ public class OreDistribution {
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
-        // Register our mod's ModConfigSpec so that FML can create and load the config file for us
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        modContainer.registerExtensionPoint(IConfigScreenFactory.class, new IConfigScreenFactory() {
+            @Override
+            public Screen createScreen(ModContainer modContainer, Screen screen) {
+                return new SettingsScreen();
+            }
+        });
+        Config.generateConfig();
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            distribution = objectMapper.readValue(new File(FMLPaths.CONFIGDIR.get().toString() + "/oredistribution/distributions.json"), Distribution.class);
+            defaultDistribution = objectMapper.readValue(Config.class.getResourceAsStream("/configs/distributions.json"), Distribution.class);
+            config = objectMapper.readValue(new File(FMLPaths.CONFIGDIR.get().toString() + "/oredistribution/config.json"), Config.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
-
-        if (Config.logDirtBlock) LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
-
-        LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
-
-        Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -70,5 +86,17 @@ public class OreDistribution {
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
+    }
+
+    public static Distribution getDistribution() {
+        return distribution;
+    }
+
+    public static Distribution getDefaultDistribution() {
+        return defaultDistribution;
+    }
+
+    public static Config getConfig() {
+        return config;
     }
 }
